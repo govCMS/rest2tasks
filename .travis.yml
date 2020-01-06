@@ -18,6 +18,3 @@ matrix:
         - docker logs rest2tasks
         - docker kill rest2tasks
         - docker rm rest2tasks
-
-notifications:
-  slack: fubarhouse:upHoIzmKb4ikkBOt2cOwgKXY
