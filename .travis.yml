@@ -1,0 +1,23 @@
+---
+language: go
+go:
+  - "1.13.4"
+
+matrix:
+  include:
+
+    - os: linux
+      services: docker
+      script:
+        - docker build -t rest2tasks .
+        - docker run -d -p 3000:3000 --name rest2tasks rest2tasks
+        - curl http://localhost:3000/
+        - curl http://localhost:3000/pullrequest/deploy -X POST -d projectName=myproject -d branchName=master
+        - curl http://localhost:3000/deploy -X POST -d projectName=myproject -d branchName=master
+        - curl http://localhost:3000/promote -X POST -d projectName=myproject -d branchName=master
+        - docker logs rest2tasks
+        - docker kill rest2tasks
+        - docker rm rest2tasks
+
+notifications:
+  slack: fubarhouse:upHoIzmKb4ikkBOt2cOwgKXY
