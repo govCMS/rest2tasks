@@ -65,7 +65,7 @@ func main() {
 	fmt.Printf("Listening on port %v\n\n", Port)
 
 	// Add handle funcs
-	http.HandleFunc("/", mergeRequestDeploy)
+	http.HandleFunc("/pullrequest/deploy", mergeRequestDeploy)
 	http.HandleFunc("/deploy", deploy)
 	http.HandleFunc("/promote", promote)
 
