@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"strings"
-
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type input struct {
@@ -15,10 +14,9 @@ type input struct {
 }
 
 var DeprecationMessage = "This endpoint has been deprecated, your deployment has been actioned by the GitLab webhook."
-var Data input
 var Port = "3000"
 
-func bodyProcessor(w http.ResponseWriter, r *http.Request) {
+func bodyProcessor(w http.ResponseWriter, r *http.Request, Data *input) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, "Error reading request body",
@@ -44,17 +42,20 @@ func printOutput(w http.ResponseWriter, r *http.Request, output string) {
 }
 
 func mergeRequestDeploy(w http.ResponseWriter, r *http.Request) {
-	bodyProcessor(w, r)
+	var Data input
+	bodyProcessor(w, r, &Data)
 	printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy MR for branch '%v' on project '%v'", Data.branchName, Data.projectName))
 }
 
 func deploy(w http.ResponseWriter, r *http.Request) {
-	bodyProcessor(w, r)
+	var Data input
+	bodyProcessor(w, r, &Data)
 	printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy branch '%v' on project '%v'", Data.branchName, Data.projectName))
 }
 
 func promote(w http.ResponseWriter, r *http.Request) {
-	bodyProcessor(w, r)
+	var Data input
+	bodyProcessor(w, r, &Data)
 	printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to promote branch '%v' on project '%v'", Data.branchName, Data.projectName))
 }
 
