@@ -9,7 +9,7 @@ The sender will receive a json response which can be used programmatically if ne
 A public Docker image is available, you can pull it using the following:
 
 ```shell script
-$ docker pull quay.io/fubarhouse/rest2tasks
+$ docker pull quay.io/govcms/rest2tasks
 ```
 
 ## Getting started
@@ -23,12 +23,12 @@ There're three ways to run this application at the moment
     ```
 2. Using docker to pull/run
     ```shell script
-    $ docker pull quay.io/fubarhouse/rest2tasks && \
-      docker run -p 3000:3000 quay.io/fubarhouse/rest2tasks;
+    $ docker pull quay.io/govcms/rest2tasks && \
+      docker run -p 3000:3000 quay.io/govcms/rest2tasks;
     ```
 3. Using local compilation
     ```shell script
-    $ git clone git@github.com:fubarhouse/rest2tasks.git && \
+    $ git clone git@github.com:govcms/rest2tasks.git && \
       cd rest2tasks && \
       go run main.go;
     ```
