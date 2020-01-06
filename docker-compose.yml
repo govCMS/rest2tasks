@@ -1,0 +1,12 @@
+version: '3.2'
+services:
+  rest2tasks:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: yarn run dev
+    ports:
+      - '5555:3000'
+    labels:
+      lagoon.type: custom
+      lagoon.template: .lagoon.app.yml
