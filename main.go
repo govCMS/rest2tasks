@@ -41,6 +41,10 @@ func printOutput(w http.ResponseWriter, r *http.Request, output string) {
 	fmt.Fprintf(w, "{\"ok\": \"true\", \"warning\": \"welcome to rest2tasks - %v\", \"message\": %v}\n", DeprecationMessage, output)
 }
 
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	printOutput(w, r, "")
+}
+
 func mergeRequestDeploy(w http.ResponseWriter, r *http.Request) {
 	var Data input
 	bodyProcessor(w, r, &Data)
@@ -65,6 +69,7 @@ func main() {
 	fmt.Printf("Listening on port %v\n\n", Port)
 
 	// Add handle funcs
+	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/pullrequest/deploy", mergeRequestDeploy)
 	http.HandleFunc("/deploy", deploy)
 	http.HandleFunc("/promote", promote)
