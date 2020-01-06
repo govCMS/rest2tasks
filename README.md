@@ -18,7 +18,9 @@ There're three ways to run this application at the moment
 
 1. Using docker to build
     ```shell script
-    $ docker build -t rest2tasks . && \
+    $ git clone git@github.com:govcms/rest2tasks.git && \
+      cd rest2tasks && 
+      docker build -t rest2tasks . && \
       docker run -p 3000:3000 rest2tasks;
     ```
 2. Using docker to pull/run
