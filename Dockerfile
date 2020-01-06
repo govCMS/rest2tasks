@@ -1,10 +1,9 @@
-FROM golang as builder
+FROM golang:alpine as builder
 RUN mkdir /app
 COPY main.go /app
 WORKDIR /app
-RUN go build .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/rest2tasks
 
-FROM alpine
-WORKDIR /app
-COPY --from=builder /app/app /app/rest2tasks
-ENTRYPOINT ["/app/rest2tasks"]
+FROM scratch
+COPY --from=builder /bin/rest2tasks /bin/rest2tasks
+ENTRYPOINT ["/bin/rest2tasks"]
