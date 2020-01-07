@@ -1,6 +1,7 @@
 # Rest2Tasks
 
-![Travis CI build status](https://travis-ci.org/govCMS/rest2tasks.svg?branch=master)
+[![Travis CI build status](https://travis-ci.org/govCMS/rest2tasks.svg?branch=master)](https://travis-ci.org/govCMS/rest2tasks)
+
 
 A stripped-back version of Amazeeio's [rest2tasks](https://github.com/amazeeio/lagoon/tree/312dfe719119f93f9293686320d0a083670c2280/services/rest2tasks) service which is now deprecated in [Lagoon](https://github.com/amazeeio/lagoon). It serves as a replacement which performs _nothing_ other than reporting back to the sender and receiver.
 
