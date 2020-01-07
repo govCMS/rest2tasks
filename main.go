@@ -50,26 +50,32 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func mergeRequestDeploy(w http.ResponseWriter, r *http.Request) {
-	var Data input
-	bodyProcessor(w, r, &Data)
-	if Data.projectName != "" && Data.branchName != "" {
-		printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy MR for branch '%v' on project '%v'", Data.branchName, Data.projectName))
+	if r.Method == "POST" {
+		var Data input
+		bodyProcessor(w, r, &Data)
+		if Data.projectName != "" && Data.branchName != "" {
+			printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy MR for branch '%v' on project '%v'", Data.branchName, Data.projectName))
+		}
 	}
 }
 
 func deploy(w http.ResponseWriter, r *http.Request) {
-	var Data input
-	bodyProcessor(w, r, &Data)
-	if Data.projectName != "" && Data.branchName != "" {
-		printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy branch '%v' on project '%v'", Data.branchName, Data.projectName))
+	if r.Method == "POST" {
+		var Data input
+		bodyProcessor(w, r, &Data)
+		if Data.projectName != "" && Data.branchName != "" {
+			printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to deploy branch '%v' on project '%v'", Data.branchName, Data.projectName))
+		}
 	}
 }
 
 func promote(w http.ResponseWriter, r *http.Request) {
-	var Data input
-	bodyProcessor(w, r, &Data)
-	if Data.projectName != "" && Data.branchName != "" {
-		printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to promote branch '%v' on project '%v'", Data.branchName, Data.projectName))
+	if r.Method == "POST" {
+		var Data input
+		bodyProcessor(w, r, &Data)
+		if Data.projectName != "" && Data.branchName != "" {
+			printOutput(w, r, fmt.Sprintf("rest2tasks: Attempted to promote branch '%v' on project '%v'", Data.branchName, Data.projectName))
+		}
 	}
 }
 
