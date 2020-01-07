@@ -27,10 +27,14 @@ func bodyProcessor(w http.ResponseWriter, r *http.Request, Data *input) {
 	for _, line := range data {
 		for _, v := range strings.Split(line, "\n") {
 			if strings.HasPrefix(v, "projectName") {
-				Data.projectName = strings.Split(v, "=")[1]
+				if len(strings.Split(v, "=") )== 2 {
+					Data.projectName = strings.Split(v, "=")[1]
+				}
 			}
 			if strings.HasPrefix(v, "branchName") {
-				Data.branchName = strings.Split(v, "=")[1]
+				if len(strings.Split(v, "=")) == 2 {
+					Data.branchName = strings.Split(v, "=")[1]
+				}
 			}
 		}
 	}
